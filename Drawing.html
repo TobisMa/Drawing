@@ -1,0 +1,46 @@
+<html lang="en" dir="ltr" manifest="Drawing.css Drawing.js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Drawing.css">
+    <title>Drawing app</title>
+</head>
+<body>
+    <section class="container">
+        <div id="toolbar">
+            <h1>Draw.</h1>
+            <label for="drawType">Stift</label>
+            <select name="drawType" id="drawType">
+                <option selected value="pencil">Stift</option>
+                <option value="rubber">Radiergummi</option>
+                <option value="triangle" disabled>Dreieck</option>
+            </select>
+            <label for="stroke">Stroke</label>
+            <input id="stroke" name='stroke' type="color" />
+            <label for="lineWidth">Line Width</label>
+            <input id="lineWidth" name='lineWidth' type="number" value="5" />
+            <button id="expand-button">Expand board</button>
+            <button id="save">Save as image</button>
+            <button id="reset" class="red-bg">Reset</button>
+            <button id="clear">Clear</button>
+        </div>
+        <div id="drawing-board">
+            <canvas id="drawing-canvas"></canvas>
+            <div class="circle canvas-overlay" id="drawCircle"></div>
+        </div>
+    </section>
+    <div class="shadowing hidden" id="shadow-page">
+        
+    </div>
+    <section id="download-area" class="hidden">
+        <button class="close-button" onclick="removeDownloadDialog()">
+            Schlie&#223;en
+        </button>
+        <pre id="preview"><!-- Used in js --></pre>
+        <a href="" download id="canvas-download-link"><!-- Used in js --></a>
+    </section>
+    <script src="Drawing.js"></script>
+    <script src="Download.js"></script>
+</body>
+</html>
