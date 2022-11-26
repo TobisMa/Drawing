@@ -35,7 +35,6 @@ let lastPencilColor = COLOR_SELECTOR.value;
 let lastStrokeWidth = lineWidth;
 
 let mouseState = undefined;
-let lockScrolling = false;
 
 function initalizePage() {
     setLineWidth(LINE_WIDTH_INPUT.value);
@@ -185,7 +184,6 @@ const draw = (e) => {
 }
 
 startDrawing = (e) => {
-    lockScrolling = true;
     switch (paintMode) {
         case PAINT_MODE_PENCIL:
             startX = e.clientX;
@@ -202,7 +200,6 @@ startDrawing = (e) => {
 };
 
 endDrawing = (e) => {
-    lockScrolling = false;
     isPainting = false; // since ending drawing, event doesn't matter
     switch (paintMode) {
         case PAINT_MODE_PENCIL:
@@ -245,11 +242,5 @@ CANVAS.addEventListener('touchcancel', endDrawing);
 
 CANVAS.addEventListener('mousemove', draw);
 CANVAS.addEventListener('touchmove', draw);
-
-document.getElementById("drawing-board").addEventListener("scroll", (e) => {
-    if (e?.target?.scrollTop !== undefined) {
-        drawOffsetY = e?.target?.scrollTop;
-    }
-})
 
 document.body.onload = initalizePage;
